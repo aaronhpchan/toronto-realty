@@ -20,7 +20,7 @@ const Property = ({ property: { Id, MlsNumber, Building: { BathroomTotal, Bedroo
                             : <Image src='/nologo.png' alt='No logo available' />}
                         </Flex>
                     </Flex>              
-                    <Text fontSize={{ base: 'xs', sm: 'lg' }}>{Address.AddressText.split('|')[0]},</Text>
+                    <Text fontSize={{ base: 'xs', sm: 'lg' }} whiteSpace='nowrap' overflow='hidden' textOverflow='ellipsis'>{Address.AddressText.split('|')[0]},</Text>
                     <Text fontSize={{ base: 'xs', sm: 'lg' }}>{Address.AddressText.split('|')[1]}</Text>
                     <Flex alignItems='center' p='1' justifyContent='space-between' w='150px' fontSize={{ base: 'sm', sm: 'xl' }} color='gray.500'>
                         {Bedrooms ? Bedrooms : '-'} <FaBed /> {BathroomTotal ? BathroomTotal : '-'} <FaBath /> 
