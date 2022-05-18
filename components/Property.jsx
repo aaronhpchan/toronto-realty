@@ -1,15 +1,13 @@
 import Link from 'next/link';
-import { Box, Flex, Text, Image, Avatar } from '@chakra-ui/react';
-import { useBreakpointValue } from '@chakra-ui/media-query';
+import { Box, Flex, Text, Image } from '@chakra-ui/react';
 import { FaBed, FaBath } from 'react-icons/fa';
-import DefaultImage from '../assets/house.webp';
 
 const Property = ({ property: { Id, MlsNumber, Building: { BathroomTotal, Bedrooms }, Individual, Property: { Address, Photo, ConvertedPrice } } }) => (
     <Link href={`/property/${MlsNumber}/${Id}`} passHref>        
         <Flex flexWrap='wrap' w={{ base: '200px', sm: '325px', lg: '420px' }}>
             <Box m='2' borderWidth='1px' borderRadius='lg' overflow='hidden' cursor='pointer' _hover={{ boxShadow:'0 3.5px 7px 0 rgba(0,0,0,0.16)' }}>
                 <Box paddingBottom='2'>
-                    <Image src={Photo ? Photo[0].HighResPath : DefaultImage} width={400} height={{ base: '125px', sm: '200px', lg: '260px' }} alt='House' />
+                    <Image src={Photo ? Photo[0].HighResPath : '/house.webp'} width={400} height={{ base: '125px', sm: '200px', lg: '260px' }} alt='House' />
                 </Box>
                 <Box w='full' p='2' paddingTop='0'>
                     <Flex alignItems='center' justifyContent='space-between' paddingY='1'>
@@ -18,8 +16,8 @@ const Property = ({ property: { Id, MlsNumber, Building: { BathroomTotal, Bedroo
                         </Flex>
                         <Flex width={{ base: '25px', sm: '40px', md: '70px', lg: '80px' }} height={{ base: '12px', sm: '19px', md: '34px' }} justifyContent='flex-end'>
                             {Individual[0].Organization?.Logo 
-                            ? <Image src={Individual[0].Organization?.Logo} alt={Individual[0].Organization?.Name}  /> 
-                            : <Avatar size={useBreakpointValue({ base: '2xs', sm: 'xs', md: 'sm' })}></Avatar>}
+                            ? <Image src={Individual[0].Organization?.Logo} alt={Individual[0].Organization?.Name} /> 
+                            : <Image src='/nologo.png' alt='No logo available' />}
                         </Flex>
                     </Flex>              
                     <Text fontSize={{ base: 'xs', sm: 'lg' }}>{Address.AddressText.split('|')[0]},</Text>

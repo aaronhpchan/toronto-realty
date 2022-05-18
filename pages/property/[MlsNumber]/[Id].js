@@ -1,4 +1,4 @@
-import { Flex, Box, Image, Avatar, Text, Link, SimpleGrid } from '@chakra-ui/react';
+import { Flex, Box, Image, Text, Link, SimpleGrid } from '@chakra-ui/react';
 import { FaBed, FaBath, FaRegPlayCircle } from 'react-icons/fa';
 import { baseUrl, fetchApi } from '../../../utilities/fetchApi';
 import ImageScrollbar from '../../../components/ImageScrollbar';
@@ -102,7 +102,7 @@ const PropertyDetails = ({ propertyDetails: { MlsNumber, PublicRemarks, Building
                 <Flex justifyContent='flex-end'>
                     {Individual[0].Organization?.Logo 
                     ? <Image src={Individual[0].Organization?.Logo} alt={Individual[0].Organization?.Name} width={{ base: '75%', sm: '100%' }} /> 
-                    : <Avatar size='sm'></Avatar>}
+                    : <Image src='/nologo.png' alt='No logo available' width={{ base: '25px', sm: '40px' }} />}
                 </Flex>
             </Flex>
         </Box>
