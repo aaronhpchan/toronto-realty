@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Box, Flex, Text, Image, Avatar } from '@chakra-ui/react';
+import { useBreakpointValue } from '@chakra-ui/media-query';
 import { FaBed, FaBath } from 'react-icons/fa';
 import DefaultImage from '../assets/house.webp';
 
@@ -15,14 +16,14 @@ const Property = ({ property: { Id, MlsNumber, Building: { BathroomTotal, Bedroo
                         <Flex alignItems='center'>
                             <Text fontSize={{ base: 'md', sm: 'xl' }} fontWeight='bold'>{ConvertedPrice}</Text>
                         </Flex>
-                        <Flex justifyContent='flex-end'>
+                        <Flex width={{ base: '25px', sm: '40px', md: '70px', lg: '80px' }} height={{ base: '12px', sm: '19px', md: '34px' }} justifyContent='flex-end'>
                             {Individual[0].Organization?.Logo 
-                            ? <Image src={Individual[0].Organization?.Logo} alt={Individual[0].Organization?.Name} width={{ base: '75%', sm: '90%' }} /> 
-                            : <Avatar size='sm'></Avatar>}
+                            ? <Image src={Individual[0].Organization?.Logo} alt={Individual[0].Organization?.Name}  /> 
+                            : <Avatar size={useBreakpointValue({ base: '2xs', sm: 'xs', md: 'sm' })}></Avatar>}
                         </Flex>
                     </Flex>              
-                    <Text fontSize={{ base: 'sm', sm: 'lg' }}>{Address.AddressText.split('|')[0]},</Text>
-                    <Text fontSize={{ base: 'sm', sm: 'lg' }}>{Address.AddressText.split('|')[1]}</Text>
+                    <Text fontSize={{ base: 'xs', sm: 'lg' }}>{Address.AddressText.split('|')[0]},</Text>
+                    <Text fontSize={{ base: 'xs', sm: 'lg' }}>{Address.AddressText.split('|')[1]}</Text>
                     <Flex alignItems='center' p='1' justifyContent='space-between' w='150px' fontSize={{ base: 'sm', sm: 'xl' }} color='gray.500'>
                         {Bedrooms ? Bedrooms : '-'} <FaBed /> {BathroomTotal ? BathroomTotal : '-'} <FaBath /> 
                     </Flex>
